@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Header -->
+<header class="bg-dark py-5"
+    style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center;">
+    <div class="container py-5 text-center text-white">
+        <h1 class="display-4 font-serif">Our Accommodations</h1>
+        <p class="lead">Choose from our selection of luxury rooms and suites.</p>
+    </div>
+</header>
+
+<!-- Rooms Grid -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            {% for room in rooms %}
+            <div class="col-lg-6 mb-5">
+                <div class="card room-card h-100 shadow-sm border-0">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6">
+                            <img src="{{ room.image_url }}" class="img-fluid rounded-start h-100"
+                                style="object-fit: cover; min-height: 300px;" alt="{{ room.name }}">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body d-flex flex-column h-100 p-4">
+                                <h5 class="card-title font-serif mb-3">{{ room.name }}</h5>
+                                <div class="mb-3">
+                                    <span class="room-price">Rs{{ room.price }}</span><span
+                                        class="text-muted">/night</span>
+                                </div>
+                                <p class="card-text text-muted small mb-4">{{ room.description }}</p>
+                                <div class="mb-4">
+                                    {% for amenity in room.amenities[:4] %}
+                                    <span class="badge bg-light text-dark border me-1 mb-1 fw-normal">{{ amenity
+                                        }}</span>
+                                    {% endfor %}
+                                </div>
+                                <a href="{{ url_for('book', room_id=room.id) }}"
+                                    class="btn btn-primary mt-auto w-100">Book This Room</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

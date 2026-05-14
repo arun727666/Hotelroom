@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<header class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="display-1">Experience Elegance</h1>
+            <p class="lead">Discover a world of luxury and comfort at SRD Hotel.</p>
+            <a href="{{ url_for('rooms') }}" class="btn btn-primary btn-lg px-5 py-3">View Our Suites</a>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80"
+                    alt="Hotel Interior" class="img-fluid shadow-lg">
+            </div>
+            <div class="col-lg-6 ps-lg-5">
+                <h2 class="font-serif mb-4">A Sanctuary in the City</h2>
+                <p class="lead text-muted mb-4">Located in the heart of the metropolis, SRD Hotel offers an oasis of
+                    calm
+                    and sophistication.</p>
+                <p class="text-muted mb-4">From our world-class spa to our Michelin-starred dining, every detail is
+                    curated to provide you with an unforgettable experience. Whether you are here for business or
+                    leisure, we ensure your stay is nothing short of perfection.</p>
+                <div class="row mt-5">
+                    <div class="col-6 mb-4">
+                        <i class="fas fa-concierge-bell fa-2x text-primary mb-3"
+                            style="color: var(--primary-color) !important;"></i>
+                        <h5 class="font-serif">24/7 Concierge</h5>
+                    </div>
+                    <div class="col-6 mb-4">
+                        <i class="fas fa-spa fa-2x text-primary mb-3"
+                            style="color: var(--primary-color) !important;"></i>
+                        <h5 class="font-serif">Luxury Spa</h5>
+                    </div>
+                    <div class="col-6 mb-4">
+                        <i class="fas fa-utensils fa-2x text-primary mb-3"
+                            style="color: var(--primary-color) !important;"></i>
+                        <h5 class="font-serif">Fine Dining</h5>
+                    </div>
+                    <div class="col-6 mb-4">
+                        <i class="fas fa-wifi fa-2x text-primary mb-3"
+                            style="color: var(--primary-color) !important;"></i>
+                        <h5 class="font-serif">High-Speed Wi-Fi</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Rooms -->
+<section class="section-padding">
+    <div class="container">
+        <div class="section-title">
+            <h2>Featured Accommodations</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="row">
+            {% for room in featured_rooms %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card room-card h-100">
+                    <img src="{{ room.image_url }}" class="card-img-top" alt="{{ room.name }}">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title font-serif">{{ room.name }}</h5>
+                            <span class="room-price">Rs {{ room.price }}<small class="text-muted text-small"
+                                    style="font-size: 0.8rem; font-weight: 400;">/night</small></span>
+                        </div>
+                        <p class="card-text text-muted flex-grow-1">{{ room.description[:100] }}...</p>
+                        <ul class="list-inline text-muted small mb-3">
+                            {% for amenity in room.amenities[:3] %}
+                            <li class="list-inline-item"><i class="fas fa-check text-primary me-1"
+                                    style="color: var(--primary-color) !important;"></i> {{ amenity }}</li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{{ url_for('book', room_id=room.id) }}" class="btn btn-outline-dark w-100 mt-auto">Book
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="{{ url_for('rooms') }}" class="btn btn-primary px-5">View All Rooms</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

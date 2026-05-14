@@ -1,0 +1,189 @@
+:root {
+    --primary-color: #c5a059; /* Gold */
+    --primary-dark: #a38240;
+    --secondary-color: #1a1a1a; /* Dark Gray/Black */
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Lato', sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-color);
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .font-serif {
+    font-family: var(--font-serif);
+}
+
+/* Navigation */
+.navbar {
+    background-color: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color) !important;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-radius: 0;
+    padding: 0.5rem 1.5rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Section Styling */
+.section-padding {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.section-title .divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 0 auto;
+}
+
+/* Cards */
+.room-card {
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.room-card img {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.room-card:hover img {
+    transform: scale(1.05);
+}
+
+.room-card .card-body {
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.room-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.room-price {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-serif);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--secondary-color);
+}
+
+/* Forms */
+.form-control, .form-select {
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .footer, .no-print {
+        display: none !important;
+    }
+    body {
+        background-color: #fff;
+    }
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+}

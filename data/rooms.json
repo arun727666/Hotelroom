@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Deluxe King Suite",
+    "type": "Suite",
+    "price": 25000,
+    "description": "Experience luxury in our Deluxe King Suite. Featuring a spacious layout, panoramic city views, and a king-sized bed with premium linens.",
+    "amenities": [
+      "King Bed",
+      "City View",
+      "Free Wi-Fi",
+      "Smart TV",
+      "Mini Bar",
+      "Room Service"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Executive Ocean View",
+    "type": "Executive",
+    "price": 35000,
+    "description": "Wake up to the sound of waves in our Executive Ocean View room. Perfect for business and leisure, offering a dedicated workspace and private balcony.",
+    "amenities": [
+      "Ocean View",
+      "Balcony",
+      "Work Desk",
+      "High-Speed Internet",
+      "Coffee Maker",
+      "Safe"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Presidential Penthouse",
+    "type": "Penthouse",
+    "price": 42000,
+    "description": "The ultimate in opulence. Our Presidential Penthouse offers unmatched privacy, a private terrace with a jacuzzi, and 24/7 butler service.",
+    "amenities": [
+      "Private Terrace",
+      "Jacuzzi",
+      "Butler Service",
+      "Living Room",
+      "Dining Area",
+      "Premium Sound System"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+  },
+  {
+    "id": 4,
+    "name": "Standard Double Room",
+    "type": "Standard",
+    "price": 55000,
+    "description": "Comfort and style meet in our Standard Double Room. Ideal for couples or solo travelers looking for a cozy retreat.",
+    "amenities": [
+      "Double Bed",
+      "En-suite Bathroom",
+      "TV",
+      "Air Conditioning",
+      "Tea/Coffee Facilities"
+    ],
+    "image_url": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+  }
+]

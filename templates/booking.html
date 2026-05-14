@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-dark text-white p-4 text-center">
+                        <h2 class="font-serif mb-0 h3">Complete Your Reservation</h2>
+                    </div>
+                    <div class="card-body p-5">
+                        <div class="row mb-5">
+                            <div class="col-md-4">
+                                <img src="{{ room.image_url }}" class="img-fluid rounded shadow-sm"
+                                    alt="{{ room.name }}">
+                            </div>
+                            <div class="col-md-8">
+                                <h4 class="font-serif">{{ room.name }}</h4>
+                                <p class="text-muted">{{ room.description }}</p>
+                                <h5 class="text-primary font-serif">Rs{{ room.price }} <span class="text-muted h6">/
+                                        night</span></h5>
+                            </div>
+                        </div>
+
+                        <form action="{{ url_for('confirm') }}" method="POST" id="bookingForm">
+                            <input type="hidden" name="room_name" value="{{ room.name }}">
+                            <input type="hidden" name="price" id="roomPrice" value="{{ room.price }}">
+                            <input type="hidden" name="total" id="totalPriceInput">
+
+                            <h5 class="mb-4 font-serif border-bottom pb-2">Guest Details</h5>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+
+                            <h5 class="mb-4 mt-5 font-serif border-bottom pb-2">Stay Details</h5>
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="checkin" class="form-label">Check-in Date</label>
+                                    <input type="date" class="form-control" id="checkin" name="checkin" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="checkout" class="form-label">Check-out Date</label>
+                                    <input type="date" class="form-control" id="checkout" name="checkout" required>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-light border text-center mb-4">
+                                <div class="d-flex justify-content-between align-items-center px-4">
+                                    <span class="h6 mb-0">Total Amount:</span>
+                                    <span class="h3 mb-0 text-primary font-serif" id="totalDisplay" Rs 0</span>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Confirm Booking</button>
+                                <a href="{{ url_for('rooms') }}" class="btn btn-outline-secondary">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkinInput = document.getElementById('checkin');
+        const checkoutInput = document.getElementById('checkout');
+        const pricePerNight = parseFloat(document.getElementById('roomPrice').value);
+        const totalDisplay = document.getElementById('totalDisplay');
+        const totalInput = document.getElementById('totalPriceInput');
+
+        // Set min date to today
+        const today = new Date().toISOString().split('T')[0];
+        checkinInput.min = today;
+        checkoutInput.min = today;
+
+        function calculateTotal() {
+            const checkin = new Date(checkinInput.value);
+            const checkout = new Date(checkoutInput.value);
+
+            if (checkin && checkout && checkout > checkin) {
+                const diffTime = Math.abs(checkout - checkin);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                const total = diffDays * pricePerNight;
+
+                totalDisplay.textContent = 'Rs' + total.toFixed(2);
+                totalInput.value = total.toFixed(2);
+            } else {
+                totalDisplay.textContent = 'Rs 0';
+                totalInput.value = '';
+            }
+        }
+
+        checkinInput.addEventListener('change', calculateTotal);
+        checkoutInput.addEventListener('change', calculateTotal);
+    });
+</script>
+{% endblock %}
