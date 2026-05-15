@@ -11,7 +11,7 @@ def load_rooms():
     with open('data/rooms.json', 'r') as f:
         return json.load(f)
 
-#start-1
+#start
 @app.route('/')
 def index():
     rooms = load_rooms()
